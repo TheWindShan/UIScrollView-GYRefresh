@@ -1,17 +1,17 @@
 //
-//  UIScrollView+LYRefresh.m
+//  UIScrollView+GYRefresh.m
 //  Test
 //
 //  Created by GuangYuYang on 2017/5/23.
 //  Copyright © 2017年 GuangYuYang. All rights reserved.
 //
 
-#import "UIScrollView+LYRefresh.h"
+#import "UIScrollView+GYRefresh.h"
 #import <objc/runtime.h>
 
 #define triggerOffset   25
 
-@implementation UIScrollView (LYRefresh)
+@implementation UIScrollView (GYRefresh)
 
 - (void)dealloc {
     if (objc_getAssociatedObject(self, @selector(observeContentOffset))) {
@@ -63,39 +63,39 @@
 }
 
 #pragma mark - public method
-- (void)ly_addTopRefresh:(void(^)(UIScrollView *scrollView))block {
+- (void)gy_addTopRefresh:(void(^)(UIScrollView *scrollView))block {
     [self observeContentOffset];
     [self setTopBlock:block];
 }
 
-- (void)ly_addBottomRefresh:(void(^)(UIScrollView *scrollView))block {
+- (void)gy_addBottomRefresh:(void(^)(UIScrollView *scrollView))block {
     [self observeContentOffset];
     [self setBottomBlock:block];
 }
 
-- (void)ly_addLeftRefresh:(void(^)(UIScrollView *scrollView))block {
+- (void)gy_addLeftRefresh:(void(^)(UIScrollView *scrollView))block {
     [self observeContentOffset];
     [self setLeftBlock:block];
 }
 
-- (void)ly_addRightRefresh:(void(^)(UIScrollView *scrollView))block {
+- (void)gy_addRightRefresh:(void(^)(UIScrollView *scrollView))block {
     [self observeContentOffset];
     [self setRightBlock:block];
 }
 
-- (void)ly_endTopRefresh {
+- (void)gy_endTopRefresh {
     [self setTopRefreshing:NO];
 }
 
-- (void)ly_endBottomRefresh {
+- (void)gy_endBottomRefresh {
     [self setBottomRefreshing:NO];
 }
 
-- (void)ly_endLeftRefresh {
+- (void)gy_endLeftRefresh {
     [self setLeftRefreshing:NO];
 }
 
-- (void)ly_endRightRefresh {
+- (void)gy_endRightRefresh {
     [self setRightRefreshing:NO];
 }
 
